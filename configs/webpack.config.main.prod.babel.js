@@ -2,14 +2,15 @@
  * Webpack config for production electron main process
  */
 
+import dotenv from 'dotenv';
 import path from 'path';
-import webpack from 'webpack';
-import { merge } from 'webpack-merge';
 import TerserPlugin from 'terser-webpack-plugin';
+import webpack from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import baseConfig from './webpack.config.base';
+import { merge } from 'webpack-merge';
 import CheckNodeEnv from '../internals/scripts/CheckNodeEnv';
 import DeleteSourceMaps from '../internals/scripts/DeleteSourceMaps';
+import baseConfig from './webpack.config.base';
 
 CheckNodeEnv('production');
 DeleteSourceMaps();
@@ -61,6 +62,7 @@ export default merge(baseConfig, {
       DEBUG_PROD: false,
       START_MINIMIZED: false,
       E2E_BUILD: false,
+      ...dotenv.config().parsed,
     }),
   ],
 

@@ -5,14 +5,15 @@
  * https://webpack.js.org/concepts/hot-module-replacement/
  */
 
-import path from 'path';
-import fs from 'fs';
-import webpack from 'webpack';
 import chalk from 'chalk';
+import { execSync, spawn } from 'child_process';
+import dotenv from 'dotenv';
+import fs from 'fs';
+import path from 'path';
+import webpack from 'webpack';
 import { merge } from 'webpack-merge';
-import { spawn, execSync } from 'child_process';
-import baseConfig from './webpack.config.base';
 import CheckNodeEnv from '../internals/scripts/CheckNodeEnv';
+import baseConfig from './webpack.config.base';
 
 // When an ESLint server is running, we can't set the NODE_ENV so we'll check if it's
 // at the dev webpack config is not accidentally run in a production environment
@@ -225,6 +226,7 @@ export default merge(baseConfig, {
      */
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
+      ...dotenv.config().parsed,
     }),
 
     new webpack.LoaderOptionsPlugin({

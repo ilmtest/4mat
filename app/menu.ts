@@ -49,12 +49,13 @@ export default class MenuBuilder {
   buildDarwinTemplate(): MenuItemConstructorOptions[] {
     const buildCommand = (
       label: string,
-      key: string
+      key: string,
+      checked = true
     ): DarwinMenuItemConstructorOptions => {
       return {
         label,
         type: 'checkbox',
-        checked: true,
+        checked,
         click: (e: Electron.MenuItem) => {
           this.mainWindow.webContents.send('setting', key, e.checked);
         },
@@ -77,6 +78,7 @@ export default class MenuBuilder {
         buildCommand('Trim Spaces', 'reduceSpaces'),
         buildCommand('Reduce Multiline Spaces', 'condenseMultilines'),
         buildCommand('Single To Double Quotes', 'singleToDoubleQuotes'),
+        buildCommand('Monitor Clipboard', 'monitorClipboard', false),
         { type: 'separator' },
         {
           label: 'Refresh Shortcuts',

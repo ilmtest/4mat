@@ -14,6 +14,7 @@ const GlobalState = ({ children }: Props) => {
   const [reduceSpaces, setReduceSpaces] = useState(true);
   const [condenseMultilines, setCondenseMultilines] = useState(true);
   const [singleToDoubleQuotes, setSingleToDoubleQuotes] = useState(true);
+  const [monitorClipboard, setMonitorClipboard] = useState(false);
 
   const reload = async () => {
     console.log('Reload shortcuts');
@@ -21,6 +22,10 @@ const GlobalState = ({ children }: Props) => {
     setShortcuts(data);
     localStorage.setItem('shortcuts', JSON.stringify(data));
     console.log('Saved shortcuts');
+
+    const myNotification = new Notification('Title', {
+      body: 'Lorem Ipsum Dolor Sit Amet',
+    });
   };
 
   const keyToFunction = {
@@ -30,6 +35,7 @@ const GlobalState = ({ children }: Props) => {
     reduceSpaces: setReduceSpaces,
     condenseMultilines: setCondenseMultilines,
     singleToDoubleQuotes: setSingleToDoubleQuotes,
+    monitorClipboard: setMonitorClipboard,
   };
 
   useEffect(() => {
@@ -56,6 +62,7 @@ const GlobalState = ({ children }: Props) => {
         reduceSpaces,
         condenseMultilines,
         singleToDoubleQuotes,
+        monitorClipboard,
       }}
     >
       {children}
