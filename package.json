@@ -272,7 +272,7 @@
     "react-hot-loader": "4.13.0",
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
-    "redaxios": "0.3.0",
+    "redaxios": "0.4.1",
     "regenerator-runtime": "0.13.7",
     "source-map-support": "0.5.19"
   },
