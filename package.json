@@ -237,7 +237,7 @@
     "file-loader": "6.2.0",
     "husky": "4.3.8",
     "identity-obj-proxy": "3.0.0",
-    "lint-staged": "10.5.3",
+    "lint-staged": "10.5.4",
     "mini-css-extract-plugin": "1.3.4",
     "opencollective-postinstall": "2.0.3",
     "optimize-css-assets-webpack-plugin": "5.0.4",
